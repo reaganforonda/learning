@@ -10,7 +10,8 @@ export default class LandingView extends React.Component{
     render() {
         return (
             <div className='landingView'>
-                Landing View
+                <button>Login</button>
+                <button>Create Account</button>
             </div>
         )
     }
