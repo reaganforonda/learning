@@ -11,7 +11,8 @@ export class RegisterView extends React.Component{
             pw :  '',
             confirmPW: '',
             displayPWError: false,
-            firstName: ''
+            firstName: '',
+            displayLoginError: false,
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -36,12 +37,13 @@ export class RegisterView extends React.Component{
 
             axios.post('/api/auth/register', user).then(() => {
                 axios.post('/api/auth/login', user).then(()=> {
-                    console.log('Redirect');
+                    this.props.history.push('/dashboard');
                 }).catch((err) => {
                     console.log(err);
                 })
             }).catch((err) => {
                 console.log(err);
+                this.setState({displayLoginError: true});
             })
         } else {
             this.setState({displayPWError: true});
@@ -59,6 +61,8 @@ export class RegisterView extends React.Component{
                     <input required={true} name='confirmPW' type='password' placeholder='Confirm Password' onChange={(e)=> this.handleInputChange(e)}/>
                     {
                         this.state.displayPWError ? <div>Passwords Do Not Match</div> : null
+                    }{
+                        this.state.displayLoginError ? <div>Email Already In Use</div> : null
                     }
                     <button>Submit</button>
                 </form>
