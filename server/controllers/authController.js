@@ -30,10 +30,10 @@ module.exports = {
 
     login: (req, res) => {
         const db = req.app.get('db');
-
         const {email, pw, confirmPW} = req.body;
 
         db.CHECK_EMAIL([email.toLowerCase()]).then((user) => {
+            
             if(user.length === 0) {
                 res.sendStatus(401);
             }
@@ -42,8 +42,9 @@ module.exports = {
                 const userID = user[0].user_id;
                 const userPW = user[0].pw;
 
-                const confirmPW = bcrypt.compareSync(pw, userPW);
-                if(confirmPW) {
+                const confirmedPW = bcrypt.compareSync(pw, userPW);
+                
+                if(confirmedPW) {
                     req.session.user.user_id = userID;
                     
                     let loggedUser = {
@@ -54,7 +55,6 @@ module.exports = {
                     }
                     res.status(200).send(loggedUser);
                 }
-
             }
         }).catch((err) => {
             console.log(`Server error while attempting to authenticate user: ${err}`);
