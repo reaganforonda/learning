@@ -10,7 +10,7 @@ export class DashboardView extends React.Component{
     render(){
         return (
             <div className='dashboard-view'>
-            
+                Dashboard
             </div>
         )
     }
