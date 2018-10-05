@@ -30,6 +30,36 @@ module.exports = {
 
     login: (req, res) => {
         const db = req.app.get('db');
+
+        const {email, pw, confirmPW} = req.body;
+
+        db.CHECK_EMAIL([email.toLowerCase()]).then((user) => {
+            if(user.length === 0) {
+                res.sendStatus(401);
+            }
+
+            if(user.length !== 0) {
+                const userID = user[0].user_id;
+                const userPW = user[0].pw;
+
+                const confirmPW = bcrypt.compareSync(pw, userPW);
+                if(confirmPW) {
+                    req.session.user.user_id = userID;
+                    
+                    let loggedUser = {
+                        user_id : user[0].user_id,
+                        first_name : user[0].first_name,
+                        last_name: user[0].last_name,
+                        email: user[0].email
+                    }
+                    res.status(200).send(loggedUser);
+                }
+
+            }
+        }).catch((err) => {
+            console.log(`Server error while attempting to authenticate user: ${err}`);
+            res.sendStatus(500);
+        })
     },
 
     validate: (req, res) => {
