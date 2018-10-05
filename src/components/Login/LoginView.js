@@ -26,9 +26,11 @@ export default class LoginView extends React.Component{
         }
 
         axios.post('/api/auth/login', user).then(()=> {
-
+            this.props.history.push('/dashboard');
         }).catch((err) => {
-            
+            if(err.response.status === 401) {
+                this.setState({displayPWError: true});  
+            }
         })
     }
 
