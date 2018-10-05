@@ -13,7 +13,9 @@ module.exports = {
         db.CHECK_EMAIL([email.toLowerCase()]).then((users) => {
             if(users.length !== 0) {
                 if(users[0].email === email) {
-                    res.status(400).send('Please Login');
+                    res.sendStatus(400);
+                } else {
+                    res.sendStatus(401);
                 }
             } else {
                 const salt = bcrypt.genSaltSync(10);
@@ -30,7 +32,7 @@ module.exports = {
 
     login: (req, res) => {
         const db = req.app.get('db');
-        const {email, pw, confirmPW} = req.body;
+        const {email, pw} = req.body;
 
         db.CHECK_EMAIL([email.toLowerCase()]).then((user) => {
             
