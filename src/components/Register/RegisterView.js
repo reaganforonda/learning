@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 
 export default class RegisterView extends React.Component{
     constructor(props) {
@@ -9,7 +9,8 @@ export default class RegisterView extends React.Component{
             email: '',
             pw :  '',
             confirmPW: '',
-            displayPWError: false
+            displayPWError: false,
+            firstName: ''
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -25,9 +26,11 @@ export default class RegisterView extends React.Component{
         if(this.state.pw === this.state.confirmPW) {
             this.setState({displayPWError: false});
             let user ={
-                email: this.state.email,
+                email: this.state.email.toLowerCase(),
                 pw: this.state.pw,
-                confirmPW : this.state.confirmPW
+                confirmPW : this.state.confirmPW,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName
             }
 
             console.log(user);
@@ -40,6 +43,8 @@ export default class RegisterView extends React.Component{
         return (
             <div className='registerview'>
                 <form className='registerform' onSubmit={(e)=>this.handleFormSubmit(e)}>
+                    <input required={true} name='firstName' type='text' placeholder='First Name' onChange={(e)=> this.handleInputChange(e)}/>
+                    <input required={true} name='lastName' type='text' placeholder='Last Name' onChange={(e)=> this.handleInputChange(e)}/>
                     <input required={true} name='email' type='email' placeholder='Email' onChange={(e)=> this.handleInputChange(e)}/>
                     <input required={true} name='pw' type='password' placeholder='Password' onChange={(e)=> this.handleInputChange(e)}/>
                     <input required={true} name='confirmPW' type='password' placeholder='Confirm Password' onChange={(e)=> this.handleInputChange(e)}/>
