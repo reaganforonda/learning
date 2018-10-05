@@ -1,7 +1,8 @@
 import React from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
 
-export default class RegisterView extends React.Component{
+export class RegisterView extends React.Component{
     constructor(props) {
         super(props);
 
@@ -33,7 +34,15 @@ export default class RegisterView extends React.Component{
                 lastName: this.state.lastName
             }
 
-            console.log(user);
+            axios.post('/api/auth/register', user).then(() => {
+                axios.post('/api/auth/login', user).then(()=> {
+                    console.log('Redirect');
+                }).catch((err) => {
+                    console.log(err);
+                })
+            }).catch((err) => {
+                console.log(err);
+            })
         } else {
             this.setState({displayPWError: true});
         }
@@ -57,3 +66,5 @@ export default class RegisterView extends React.Component{
         )
     }
 }
+
+export default withRouter(RegisterView);
