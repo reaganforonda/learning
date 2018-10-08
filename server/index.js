@@ -8,6 +8,7 @@ const session = require('express-session');
 const sessionMiddleware = require('./middlewares/sessionMiddleware');
 dotenv.config();
 const authController = require('./controllers/authController');
+const classController = require('./controllers/classController');
 
 const {SERVER_PORT, CONNECTION_STRING, SECRET_SESSION} = process.env
 
@@ -36,6 +37,10 @@ app.get('/api/auth/me', authController.validate)
 app.post('/api/auth/login', authController.login);
 app.post('/api/auth/logout', authController.logout);
 app.post('/api/auth/register', authController.register);
+
+// Class Endpoint
+app.get('/api/classes')
+app.post('/api/classes', classController.create);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Creeping on Port: ${SERVER_PORT}`);
