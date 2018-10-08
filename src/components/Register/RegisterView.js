@@ -37,7 +37,7 @@ export class RegisterView extends React.Component{
 
             axios.post('/api/auth/register', user).then(() => {
                 axios.post('/api/auth/login', user).then(()=> {
-                    this.props.history.push('/dashboard');
+                    this.props.history.push('/dashboard/classes');
                 }).catch((err) => {
                     console.log(err);
                 })
