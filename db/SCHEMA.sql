@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS classes;
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
@@ -6,4 +7,13 @@ CREATE TABLE users (
     pw TEXT,
     first_name VARCHAR(45),
     last_name VARCHAR(45)
+);
+
+CREATE TABLE classes (
+    class_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    class_name VARCHAR(45),
+    class_code VARCHAR(45),
+    school_name VARCHAR(45),
+    class_time DATE
 );
