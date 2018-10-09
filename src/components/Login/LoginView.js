@@ -1,7 +1,10 @@
 import React from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {loadUser} from '../../ducks/userReducer';
 
-export default class LoginView extends React.Component{
+export  class LoginView extends React.Component{
     constructor(props) {
         super(props);
 
@@ -25,7 +28,8 @@ export default class LoginView extends React.Component{
             pw : this.state.pw
         }
 
-        axios.post('/api/auth/login', user).then(()=> {
+        axios.post('/api/auth/login', user).then((user)=> {
+            this.props.loadUser(user.data);
             this.props.history.push('/dashboard/classes');
         }).catch((err) => {
             if(err.response.status === 401) {
@@ -49,3 +53,12 @@ export default class LoginView extends React.Component{
         )
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        user: state.userReducer.user
+    }
+}
+
+export default connect(mapStateToProps, {loadUser})(withRouter(LoginView));
+
