@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 const INITIAL_STATE = {
     user: ''
 }
