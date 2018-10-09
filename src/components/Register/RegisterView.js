@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {loadUser} from '../../ducks/userReducer';
 
 export class RegisterView extends React.Component{
     constructor(props) {
@@ -36,7 +38,8 @@ export class RegisterView extends React.Component{
             }
 
             axios.post('/api/auth/register', user).then(() => {
-                axios.post('/api/auth/login', user).then(()=> {
+                axios.post('/api/auth/login', user).then((user)=> {
+                    this.props.loadUser(user.data);
                     this.props.history.push('/dashboard/classes');
                 }).catch((err) => {
                     console.log(err);
@@ -71,4 +74,10 @@ export class RegisterView extends React.Component{
     }
 }
 
-export default withRouter(RegisterView);
+function mapStateToProps(state) {
+    return {
+        user: state.userReducer.user
+    }
+}
+
+export default connect(mapStateToProps, {loadUser})(withRouter(RegisterView));
