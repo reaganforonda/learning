@@ -39,8 +39,8 @@ app.post('/api/auth/logout', authController.logout);
 app.post('/api/auth/register', authController.register);
 
 // Class Endpoint
-app.get('/api/classes')
-app.post('/api/classes', classController.create);
+app.get('/api/classes', classController.getClasses)
+app.post('/api/classes', classController.createClass);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Creeping on Port: ${SERVER_PORT}`);
