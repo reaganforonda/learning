@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export default class AddClassForm extends React.Component{
     constructor(props){
@@ -20,7 +21,21 @@ export default class AddClassForm extends React.Component{
     submitForm(e){
         e.preventDefault();
 
-        this.props.toggleClassFormModal()
+        let newClass = {
+            className: this.state.className,
+            classCode: this.state.classCode,
+            schoolName: this.state.schoolName,
+            schoolYear: this.state.schoolYear,
+            classStartDate: this.state.classStartDate,
+            classEndDate: this.state.classEndDate
+        };
+
+        axios.post(`/api/classes?userID=${this.props.user.user_id}`, newClass).then((result) => {
+            this.props.reloadClasses(this.props.user);
+            this.props.toggleClassFormModal()
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
     handleInputChange(e) {
