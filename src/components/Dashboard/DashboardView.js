@@ -18,7 +18,7 @@ export class DashboardView extends React.Component{
                     <DasbhoardMenu/>
                     <div>
                         <Switch>
-                            <Route exact path='/dashboard/classes' component={ClassesView}/>
+                            
                         </Switch>
                     </div>
                 </main>
