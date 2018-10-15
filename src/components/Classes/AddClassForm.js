@@ -45,14 +45,30 @@ export default class AddClassForm extends React.Component{
     render(){
         return (
             <form className='add-class-form'>
-                <input type='text' name='className' placeholder='Class Name' onChange={(e)=>this.handleInputChange(e)}/>
-                <input type='text' name='classCode' placeholder='Class Code' onChange={(e)=>this.handleInputChange(e)}/>
-                <input type='text' name='schoolName' placeholder='School Name' onChange={(e)=>this.handleInputChange(e)}/>
-                <input type='text' name='schoolYear' placeholder='School Year' onChange={(e)=>this.handleInputChange(e)}/>
-                <input type='date' name='classStartDate' placeholder='Class Start Date' onChange={(e)=>this.handleInputChange(e)}/>
-                <input type='date' name='classEndDate' placeholder='Class End Date' onChange={(e)=>this.handleInputChange(e)}/>
-                <button onClick={()=>this.props.toggleClassFormModa}>Cancel</button>
-                <button onClick={(e)=> this.submitForm(e)}>Create Class</button>
+                <div className='form-row'>
+                    <input type='text' name='className' placeholder='Class Name' onChange={(e)=>this.handleInputChange(e)}/>
+                </div>
+                <div className='form-row'>
+                    <input type='text' name='classCode' placeholder='Class Code' onChange={(e)=>this.handleInputChange(e)}/>
+                </div>
+                <div className='form-row'>
+                    <input type='text' name='schoolName' placeholder='School Name' onChange={(e)=>this.handleInputChange(e)}/>
+                </div>
+                <div className='form-row'>
+                    <input type='text' name='schoolYear' placeholder='School Year' onChange={(e)=>this.handleInputChange(e)}/>
+                </div>
+                <div className='form-row'>
+                    <input type='date' name='classStartDate' placeholder='Class Start Date' onChange={(e)=>this.handleInputChange(e)}/>
+                </div>
+                <div className='form-row'>
+                    <input type='date' name='classEndDate' placeholder='Class End Date' onChange={(e)=>this.handleInputChange(e)}/>
+                </div>
+                <div className='form-row'>
+                    <div className='form-btns'>
+                        <button onClick={()=>this.props.toggleClassFormModa}>Cancel</button>
+                        <button onClick={(e)=> this.submitForm(e)}>Create Class</button>    
+                    </div>
+                </div>
             </form>
         )
     }
