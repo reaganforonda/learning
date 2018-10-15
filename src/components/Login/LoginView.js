@@ -32,7 +32,7 @@ export  class LoginView extends React.Component{
 
         axios.post('/api/auth/login', user).then((user)=> {
             this.props.loadUser(user.data);
-            this.props.history.push('/dashboard/classes');
+            this.props.history.push('/classes');
         }).catch((err) => {
             if(err.response.status === 401) {
                 this.setState({displayPWError: true});  
