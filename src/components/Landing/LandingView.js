@@ -27,10 +27,13 @@ export class LandingView extends React.Component{
         return (
             <div className='landingView'>
                 <div className='inner'>
-                    <h1>ClassRoom Manager</h1>
-                    <p>A classroom management web application for teachers</p>
-                    <button onClick={(e)=>this.handlButton(e, 'login')}>Login</button>
-                    <button onClick={(e)=>this.handlButton(e, 'register')}>Create Account</button>
+                    <h1>TeachSuite</h1>
+                    <p>TeachSuite is a toolkit for help teacher make managing admin duties easier.</p>
+                    <p>TeachSuite allows teachers to manage grades, attendance, and other administartive tasks in one place</p>
+                    <div className='inner-btns'>
+                        <button onClick={(e)=>this.handlButton(e, 'login')}>Login</button>
+                        <button onClick={(e)=>this.handlButton(e, 'register')}>Sign-Up  </button>
+                    </div>
                 </div>
             </div>
         )
