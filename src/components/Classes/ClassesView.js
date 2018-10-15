@@ -1,8 +1,9 @@
 import React from 'react';
 import {withRouter} from'react-router-dom';
 import {connect} from 'react-redux';
-import {loadUserClasses} from '../../ducks/classReducer';
+import {loadUserClasses, setActiveClass} from '../../ducks/classReducer';
 import AddClassForm from './AddClassForm';
+import ClassesList from './ClassesList';
 
 export class ClassesView extends React.Component{
     constructor(props) {
@@ -13,6 +14,7 @@ export class ClassesView extends React.Component{
         }
 
         this.toggleClassFormModal = this.toggleClassFormModal.bind(this);
+        this.handleClassSelection = this.handleClassSelection.bind(this);
     }
 
     componentDidMount() {
@@ -27,21 +29,27 @@ export class ClassesView extends React.Component{
         }
     }
 
+    handleClassSelection(e, selectedClass){
+        e.preventDefault();
+
+        this.props.setActiveClass(selectedClass);
+        
+    }
+
     render(){
         return (
             <div className='classesview'>
                 {
                     this.props.classes.length === 0 || !this.props.classes ? <button onClick={this.toggleClassFormModal}>Add a Class</button> : (
-                        <div>
-                            List of classes
-                        </div>
+                        <div><button onClick={this.toggleClassFormModal}>Add a Class</button><ClassesList setActiveClass={this.props.setActiveClass} classes={this.props.classes}/></div>
                     )
                 }
-                <div>
+                
                     {
-                        this.state.displayClassFormModal ? <AddClassForm user={this.props.user} reloadClasses={this.props.loadUserClasses} toggleClassFormModal={this.toggleClassFormModal}/> : null
+                        this.state.displayClassFormModal ? 
+                            <div><AddClassForm setActiveClass={this.handleClassSelection} user={this.props.user} reloadClasses={this.props.loadUserClasses} toggleClassFormModal={this.toggleClassFormModal}/></div> : null
                     }
-                </div>
+                
             </div>
         )
     }
@@ -54,4 +62,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps, {loadUserClasses})(withRouter(ClassesView));
+export default connect(mapStateToProps, {loadUserClasses, setActiveClass})(withRouter(ClassesView));
