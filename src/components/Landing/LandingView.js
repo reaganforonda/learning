@@ -26,8 +26,12 @@ export class LandingView extends React.Component{
     render() {
         return (
             <div className='landingView'>
-                <button onClick={(e)=>this.handlButton(e, 'login')}>Login</button>
-                <button onClick={(e)=>this.handlButton(e, 'register')}>Create Account</button>
+                <div className='inner'>
+                    <h1>ClassRoom Manager</h1>
+                    <p>A classroom management web application for teachers</p>
+                    <button onClick={(e)=>this.handlButton(e, 'login')}>Login</button>
+                    <button onClick={(e)=>this.handlButton(e, 'register')}>Create Account</button>
+                </div>
             </div>
         )
     }
