@@ -44,7 +44,7 @@ export class ClassesView extends React.Component{
                 }
                 {
                     this.props.classes.length === 0 || !this.props.classes ? <button className='addclass-btn' onClick={this.toggleClassFormModal}>Add a Class</button> : (
-                        <div><button onClick={this.toggleClassFormModal}>Add a Class</button><ClassesList setActiveClass={this.props.setActiveClass} classes={this.props.classes}/></div>
+                        <div className='list-of-classes'><button className='addclass-btn' onClick={this.toggleClassFormModal}>Add a Class</button><ClassesList setActiveClass={this.props.setActiveClass} classes={this.props.classes}/></div>
                     )
                 }
                 
