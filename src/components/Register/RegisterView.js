@@ -53,21 +53,45 @@ export class RegisterView extends React.Component{
         }
     }
 
+    handleCancel(e){
+        e.preventDefault();
+
+        this.props.history.push('/');
+    }
+
     render(){
         return (
             <div className='registerview'>
                 <form className='registerform' onSubmit={(e)=>this.handleFormSubmit(e)}>
-                    <input required={true} name='firstName' type='text' placeholder='First Name' onChange={(e)=> this.handleInputChange(e)}/>
-                    <input required={true} name='lastName' type='text' placeholder='Last Name' onChange={(e)=> this.handleInputChange(e)}/>
-                    <input required={true} name='email' type='email' placeholder='Email' onChange={(e)=> this.handleInputChange(e)}/>
-                    <input required={true} name='pw' type='password' placeholder='Password' onChange={(e)=> this.handleInputChange(e)}/>
-                    <input required={true} name='confirmPW' type='password' placeholder='Confirm Password' onChange={(e)=> this.handleInputChange(e)}/>
+                    <div className='form-row'>
+                        <h1>Please Register</h1>
+                    </div>
+                    <div className='form-row'>
+                        <input required={true} name='firstName' type='text' placeholder='First Name' onChange={(e)=> this.handleInputChange(e)}/>
+                    </div>
+                    <div className='form-row'>
+                        <input required={true} name='lastName' type='text' placeholder='Last Name' onChange={(e)=> this.handleInputChange(e)}/>
+                    </div>
+                    <div className='form-row'>
+                        <input required={true} name='email' type='email' placeholder='Email' onChange={(e)=> this.handleInputChange(e)}/>
+                    </div>
+                    <div className='form-row'>
+                        <input required={true} name='pw' type='password' placeholder='Password' onChange={(e)=> this.handleInputChange(e)}/>
+                    </div>
+                    <div className='form-row'>
+                        <input required={true} name='confirmPW' type='password' placeholder='Confirm Password' onChange={(e)=> this.handleInputChange(e)}/>
+                    </div>
+                    <div className='form-row'>
+                        <div className='form-btns'>
+                            <button type='button' onClick={(e)=>this.handleCancel(e)}>Cancel</button>
+                            <button>Submit</button>
+                        </div>
+                    </div>
                     {
-                        this.state.displayPWError ? <div>Passwords Do Not Match</div> : null
+                        this.state.displayPWError ? <div className='form-row'><p className='error-message'>Passwords Do Not Match</p></div> : null
                     }{
-                        this.state.displayLoginError ? <div>Email Already In Use</div> : null
+                        this.state.displayLoginError ? <div className='form-row'><p className='error-message'>Email Already In Use</p></div> : null
                     }
-                    <button>Submit</button>
                 </form>
             </div>
         )
