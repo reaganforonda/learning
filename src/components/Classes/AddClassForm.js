@@ -65,7 +65,7 @@ export default class AddClassForm extends React.Component{
                 </div>
                 <div className='form-row'>
                     <div className='form-btns'>
-                        <button onClick={()=>this.props.toggleClassFormModa}>Cancel</button>
+                        <button type='button' onClick={(e)=>this.props.toggleClassFormModal(e)}>Cancel</button>
                         <button onClick={(e)=> this.submitForm(e)}>Create Class</button>    
                     </div>
                 </div>
