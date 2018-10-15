@@ -33,7 +33,7 @@ export class ClassesView extends React.Component{
         e.preventDefault();
 
         this.props.setActiveClass(selectedClass);
-        
+        this.props.history.push('/dashboard');
     }
 
     render(){
@@ -44,7 +44,7 @@ export class ClassesView extends React.Component{
                 }
                 {
                     this.props.classes.length === 0 || !this.props.classes ? <button className='addclass-btn' onClick={this.toggleClassFormModal}>Add a Class</button> : (
-                        <div className='list-of-classes'><button className='addclass-btn' onClick={this.toggleClassFormModal}>Add a Class</button><ClassesList setActiveClass={this.props.setActiveClass} classes={this.props.classes}/></div>
+                        <div className='list-of-classes'><button className='addclass-btn' onClick={this.toggleClassFormModal}>Add a Class</button><ClassesList handleClassSelection={this.handleClassSelection} setActiveClass={this.props.setActiveClass} classes={this.props.classes}/></div>
                     )
                 }
                 
