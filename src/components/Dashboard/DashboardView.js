@@ -1,8 +1,7 @@
 import React from 'react';
 import {withRouter, Switch, Route} from 'react-router-dom';
-import DashboardHeader from './DashboardHeader';
 import DasbhoardMenu from './DashboardMenu';
-import ClassesView from '../Classes/ClassesView';
+
 
 export class DashboardView extends React.Component{
     constructor(props) {
@@ -13,7 +12,7 @@ export class DashboardView extends React.Component{
     render(){
         return (
             <div className='dashboard-view'>
-                <DashboardHeader/>
+                
                 <main>
                     <DasbhoardMenu/>
                     <div>
