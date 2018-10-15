@@ -15,6 +15,8 @@ export  class LoginView extends React.Component{
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     handleInputChange(e) {
@@ -38,6 +40,12 @@ export  class LoginView extends React.Component{
         })
     }
 
+    handleCancel(e) {
+        e.preventDefault();
+
+        this.props.history.push('/');
+    }
+
     render(){
         return (
             <div className='loginview'>
@@ -54,7 +62,7 @@ export  class LoginView extends React.Component{
                     
                     <div className='form-row'>
                         <div className='form-btns'>
-                            <button className='cancel-btn'>Cancel</button>
+                            <button type='button' onClick={(e)=>this.handleCancel(e)} className='cancel-btn'>Cancel</button>
                             <button className='login-btn'>Login</button>
                         </div>
                     </div>
