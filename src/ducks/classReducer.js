@@ -2,10 +2,12 @@ import axios from 'axios';
 
 const INITIAL_STATE = {
     classes: [],
-    loading: true
+    loading: true,
+    activeClasse: ''
 }
 
 const LOAD_ALL_CLASSES = "LOAD_ALL_CLASSES";
+const SET_ACTIVE_CLASS = 'SET_ACTIVE_CLASS';
 
 export function loadUserClasses(user) {
     let classes = axios.get(`/api/classes?userID=${user.user_id}`).then((result) => {
@@ -18,6 +20,13 @@ export function loadUserClasses(user) {
     }
 }
 
+export function setActiveClass(classroom) {
+    return {
+        type: SET_ACTIVE_CLASS,
+        payload: classroom
+    }
+}
+
 export default function classReducer(state=INITIAL_STATE, action) {
     switch(action.type) {
 
@@ -26,6 +35,9 @@ export default function classReducer(state=INITIAL_STATE, action) {
 
         case LOAD_ALL_CLASSES + "_FULFILLED":
             return Object.assign({}, state, {classes: action.payload, loading: false});
+
+        case SET_ACTIVE_CLASS:
+            return Object.assign({}, state, {activeClasse: action.payload});
 
         default:
             return state
