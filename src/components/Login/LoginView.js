@@ -42,13 +42,22 @@ export  class LoginView extends React.Component{
         return (
             <div className='loginview'>
                 <form className='loginform' onSubmit={(e)=>this.handleFormSubmit(e)}>
-                    <h1>Please Log In</h1>
-                    <input type='email' required={true} placeholder='Email' name='email' onChange={(e)=>this.handleInputChange(e)}/>
-                    <input type='password' required={true} placeholder='Password' name='pw' onChange={(e)=>this.handleInputChange(e)}/>
+                    <div className='form-row'>
+                        <h1>Please Log In</h1>
+                    </div>
+                    <div className='form-row'>
+                        <input type='email' required={true} placeholder='Email' name='email' onChange={(e)=>this.handleInputChange(e)}/>
+                    </div>
+                    <div className='form-row'>
+                        <input type='password' required={true} placeholder='Password' name='pw' onChange={(e)=>this.handleInputChange(e)}/>
+                    </div>
                     {
                         this.state.displayPWError ? <div>Incorrect Password or Email</div> : null
                     }
-                    <button>Log In</button>
+
+                    <div className='form-row'>
+                        <button>Log In</button>
+                    </div>
                 </form>
             </div>
         )

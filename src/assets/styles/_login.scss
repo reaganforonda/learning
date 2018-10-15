@@ -12,14 +12,36 @@
     background: linear-gradient(to top, $color5, $color4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ 
 
     .loginform {
-        border: 1px solid red;
+        border: 1px solid black;
         width: 500px;
         min-width: fit-content;
         height: 500px;
         min-height: fit-content;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0,0.4);
+        transition: 0.3s;
+        border-radius: 5px; 
 
-        h1 {
-            font-size: 3em;
+        .form-row {
+            h1 {
+                text-align: center;
+                font-size: 3em;
+                text-transform: uppercase;
+            }
+
+            height: 100px;
+            padding: 30px;
+
+            input {
+                outline: none;
+                width: 100%;
+                height: 40px;
+                font-size: 1em;
+                border-radius: 5px;
+            }
+
+            input:focus{
+                border: 2px solid $color4;
+            }
         }
     }
 }
