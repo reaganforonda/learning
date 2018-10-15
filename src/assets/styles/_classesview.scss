@@ -6,9 +6,8 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    
+        
     h1{
         font-size: 3em;
         padding: 10px;
@@ -40,5 +39,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .list-of-classes{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 }
