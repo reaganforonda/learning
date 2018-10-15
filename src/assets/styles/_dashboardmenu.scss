@@ -1,0 +1,36 @@
+@import './mixins';
+@import './variables';
+
+.dashboardmenu {
+    background: $color5;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 200px;
+    min-width: fit-content;
+    padding-top: 10px;
+
+
+    .side-link {
+        color: $color6;
+        font-size: 1.5em;
+        text-decoration: none;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        
+    }
+
+    .side-link:hover{
+        color: $color1;
+    }
+
+    .active-link{
+        color: $color3;
+        text-decoration: none;
+    }
+
+    .active-link:hover{
+        color: $color3;
+    }
+
+}

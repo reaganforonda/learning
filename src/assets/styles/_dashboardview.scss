@@ -1,0 +1,8 @@
+@import './mixins';
+@import './variables';
+
+.dashboard-view{
+    display: flex;
+    background: $color6;
+    height: 100%;
+}
