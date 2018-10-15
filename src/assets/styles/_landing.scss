@@ -2,5 +2,15 @@
 @import './variables';
 
 .landingView{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
     
+    .inner {
+        h1{
+            font-size: 3em;
+        }
+        color: white;
+    }
 }
