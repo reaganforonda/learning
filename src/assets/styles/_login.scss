@@ -42,6 +42,24 @@
             input:focus{
                 border: 2px solid $color4;
             }
+
+            .form-btns {
+                display: flex;
+                justify-content: space-evenly;
+
+                button {
+                    width: 100px;
+                    font-size: 1em;
+                    padding: 5px;
+                    border-radius: $btnRadius1;
+                }
+            }
+
+            .error-message{
+                color: red;
+                text-align: center;
+                font-size: 1em;
+            }
         }
     }
 }

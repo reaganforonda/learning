@@ -51,13 +51,17 @@ export  class LoginView extends React.Component{
                     <div className='form-row'>
                         <input type='password' required={true} placeholder='Password' name='pw' onChange={(e)=>this.handleInputChange(e)}/>
                     </div>
-                    {
-                        this.state.displayPWError ? <div>Incorrect Password or Email</div> : null
-                    }
-
+                    
                     <div className='form-row'>
-                        <button>Log In</button>
+                        <div className='form-btns'>
+                            <button className='cancel-btn'>Cancel</button>
+                            <button className='login-btn'>Login</button>
+                        </div>
                     </div>
+
+                    {
+                        this.state.displayPWError ? <div className='form-row'><p className='error-message'>Incorrect Password or Email</p></div> : null
+                    }
                 </form>
             </div>
         )
