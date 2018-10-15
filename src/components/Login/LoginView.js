@@ -42,6 +42,7 @@ export  class LoginView extends React.Component{
         return (
             <div className='loginview'>
                 <form className='loginform' onSubmit={(e)=>this.handleFormSubmit(e)}>
+                    <h1>Please Log In</h1>
                     <input type='email' required={true} placeholder='Email' name='email' onChange={(e)=>this.handleInputChange(e)}/>
                     <input type='password' required={true} placeholder='Password' name='pw' onChange={(e)=>this.handleInputChange(e)}/>
                     {
