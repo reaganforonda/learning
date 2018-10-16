@@ -45,6 +45,7 @@ app.post('/api/classes', classController.createClass);
 
 // Student Endpoints
 app.post('/api/students', studentController.createStudent);
+app.get(`/api/students/:user_id`, studentController.getStudents);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Creeping on Port: ${SERVER_PORT}`);
