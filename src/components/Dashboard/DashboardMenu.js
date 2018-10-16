@@ -16,6 +16,7 @@ export default class DasbhoardMenu extends React.Component{
                     <NavLink className='side-link' activeClassName='active-link' to='/dashboard/attendance'>Attendance</NavLink>
                     <NavLink className='side-link' activeClassName='active-link'  to='/dashboard/grading'>Grading</NavLink>
                     <NavLink className='side-link' activeClassName='active-link'  to='/dashboard/students'>Students</NavLink>
+                    <NavLink className='side-link' activeClassName='active-link'  to='/dashboard/coursework'>Course Work</NavLink>
             </nav>
         )
     }
