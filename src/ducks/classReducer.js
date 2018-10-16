@@ -3,7 +3,7 @@ import axios from 'axios';
 const INITIAL_STATE = {
     classes: [],
     loading: true,
-    activeClasse: ''
+    activeClass: ''
 }
 
 const LOAD_ALL_CLASSES = "LOAD_ALL_CLASSES";
@@ -37,7 +37,7 @@ export default function classReducer(state=INITIAL_STATE, action) {
             return Object.assign({}, state, {classes: action.payload, loading: false});
 
         case SET_ACTIVE_CLASS:
-            return Object.assign({}, state, {activeClasse: action.payload});
+            return Object.assign({}, state, {activeClass: action.payload});
 
         default:
             return state
