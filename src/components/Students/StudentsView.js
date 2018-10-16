@@ -33,7 +33,7 @@ export class StudentsView extends React.Component{
                 </div>
                 {
                     this.state.displayForm ? <div className='student-form-modal'>
-                        <AddStudentForm activeClass={this.props.activeClass}/>
+                        <AddStudentForm user={this.props.user} activeClass={this.props.activeClass}/>
                     </div> : null
                 }
                 
