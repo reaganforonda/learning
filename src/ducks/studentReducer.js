@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 const LOAD_ALL_STUDENTS = 'LOAD_ALL_STUDENTS';
 
 export function loadStudents(classID, userID) {
-    let students = axios.get(`/api/student/${userID}?classID=${classID}`).then((result) => {
+    let students = axios.get(`/api/students/${userID}?classID=${classID}`).then((result) => {
         return result.data
     })
 
