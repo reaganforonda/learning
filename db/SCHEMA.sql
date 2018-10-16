@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS students;
 DROP TABLE IF EXISTS classes;
 DROP TABLE IF EXISTS users;
 
@@ -19,3 +20,16 @@ CREATE TABLE classes (
     class_start_date DATE,
     class_end_date DATE
 );
+
+CREATE TABLE students (
+    student_id SERIAL PRIMARY KEY,
+    user_id INTEGER REFERENCES users(user_id),
+    class_id INTEGER REFERENCES classes(class_id),
+    first_name VARCHAR(45),
+    last_name VARCHAR(45),
+    parent_first_name  VARCHAR(45),
+    parent_last_name VARCHAR(45),
+    home_phone VARCHAR(45),
+    parent_work_phone VARCHAR(45),
+    parent_email VARCHAR(45)
+)
