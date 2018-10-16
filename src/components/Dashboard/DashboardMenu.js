@@ -10,14 +10,13 @@ export default class DasbhoardMenu extends React.Component{
 
     render(){
         return (
-            <div className='dashboardmenu'>
-                <nav className='nav-menu'>
-                    <NavLink className='side-link' activeClassName='active-link' exact to='/dashboard/classes'>Classes</NavLink>
-                    <NavLink className='side-link' activeClassName='active-link' exact to='/dashboard/attendance'>Attendance</NavLink>
-                    <NavLink className='side-link' activeClassName='active-link' exact to='/dashboard/grading'>Grading</NavLink>
-                    <NavLink className='side-link' activeClassName='active-link' exact to='/dashboard/students'>Students</NavLink>
-                </nav>
-            </div>
+            <nav className='dashboardmenu'>
+                    <NavLink className='side-link' activeClassName='active-link' exact to={'/dashboard'}>Dashboard</NavLink>
+                    <NavLink className='side-link' activeClassName='active-link'  to='/classes'>Classes</NavLink>
+                    <NavLink className='side-link' activeClassName='active-link' to='/dashboard/attendance'>Attendance</NavLink>
+                    <NavLink className='side-link' activeClassName='active-link'  to='/dashboard/grading'>Grading</NavLink>
+                    <NavLink className='side-link' activeClassName='active-link'  to='/dashboard/students'>Students</NavLink>
+            </nav>
         )
     }
 }
