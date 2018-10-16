@@ -1,7 +1,8 @@
 import React from 'react';
 import {withRouter, Switch, Route} from 'react-router-dom';
 import DasbhoardMenu from './DashboardMenu';
-
+import AttendanceView from '../Attendance/AttendanceView';
+import StudentsView from '../Students/StudentsView';
 
 export class DashboardView extends React.Component{
     constructor(props) {
@@ -12,12 +13,13 @@ export class DashboardView extends React.Component{
     render(){
         return (
             <div className='dashboard-view'>
-                
+                    <DasbhoardMenu />
                 <main>
-                    <DasbhoardMenu/>
+                    
                     <div>
                         <Switch>
-                            
+                            <Route path='/dashboard/attendance' component={AttendanceView}/>
+                            <Route path='/dashboard/students' component={StudentsView}/>
                         </Switch>
                     </div>
                 </main>
