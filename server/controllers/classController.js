@@ -23,5 +23,5 @@ module.exports = {
             console.log(`Server error while attempting to retrive user classes: ${err}`);
             res.sendStatus(500);
         })
-    },
+    },    
 }
