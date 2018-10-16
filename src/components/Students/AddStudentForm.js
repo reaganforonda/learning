@@ -26,13 +26,13 @@ export default class AddStudentForm extends React.Component{
             user_id: this.props.user.user_id,
             class_id: this.props.activeClass.class_id,
             first_name: this.state.firstName,
-            last_name: this.state.last_name,
+            last_name: this.state.lastName,
         }
 
         if(this.verifyForm()){
             axios.post('/api/students', student).then(()=> {
                 this.resetForm();
-                this.props.toggleDisplayForm();
+                this.props.getStudents(this.props.activeClass.class_id, this.props.user.user_id)
             }).catch((err)=> {
                 console.log(err)
             })
@@ -63,7 +63,7 @@ export default class AddStudentForm extends React.Component{
                     <input required={true} type='text' name='lastName' placeholder='Student Last Name' onChange={(e)=>this.handleInputChange(e)}/>
                 </div>
                 <div className='student-form-row'>
-                    <button onClick={()=>this.props.toggleDisplayForm()}>Cancel</button>
+                    <button type='button' onClick={()=>this.props.toggleDisplayForm()}>Cancel</button>
                     <button onClick={(e)=>this.handleFormSubmit(e)}>Add Student</button>
                 </div>
             </form>
