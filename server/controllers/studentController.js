@@ -15,8 +15,9 @@ module.exports = {
         const db = req.app.get('db');
 
         const {user_id} = req.params;
+        const {studentID, classID} = req.query
 
-        db.GET_STUDENTS([user_id]).then((result) => {
+        db.GET_STUDENTS([user_id, classID, studentID]).then((result) => {
             res.status(200).send(result);
         }).catch((err) => {
             console.log(`Server error while attempting to retrieve all students: ${err}`);
