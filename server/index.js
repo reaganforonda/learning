@@ -9,6 +9,7 @@ const sessionMiddleware = require('./middlewares/sessionMiddleware');
 dotenv.config();
 const authController = require('./controllers/authController');
 const classController = require('./controllers/classController');
+const studentController= require('./controllers/studentController');
 
 const {SERVER_PORT, CONNECTION_STRING, SECRET_SESSION} = process.env
 
@@ -41,6 +42,9 @@ app.post('/api/auth/register', authController.register);
 // Class Endpoint
 app.get('/api/classes', classController.getClasses)
 app.post('/api/classes', classController.createClass);
+
+// Student Endpoints
+app.post('/api/students', studentController.createStudent);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Creeping on Port: ${SERVER_PORT}`);
