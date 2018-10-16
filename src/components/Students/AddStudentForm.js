@@ -8,12 +8,12 @@ export default class AddStudentForm extends React.Component{
         this.state={
             firstName: '',
             lastName: '',
-            homePhone: ''
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
         this.verifyForm = this.verifyForm.bind(this);
+        this.resetForm = this.resetForm.bind(this);
     }
 
     handleInputChange(e) {
@@ -31,7 +31,8 @@ export default class AddStudentForm extends React.Component{
 
         if(this.verifyForm()){
             axios.post('/api/students', student).then(()=> {
-                
+                this.resetForm();
+                this.props.toggleDisplayForm();
             }).catch((err)=> {
                 console.log(err)
             })
@@ -40,6 +41,13 @@ export default class AddStudentForm extends React.Component{
 
     verifyForm(){
         return (this.state.firstName.length !== 0 && this.state.lastName.length !== 0);
+    }
+
+    resetForm(){
+        this.setState({
+            firstName: '',
+            lastName: '',
+        })
     }
 
     render(){
@@ -55,6 +63,7 @@ export default class AddStudentForm extends React.Component{
                     <input required={true} type='text' name='lastName' placeholder='Student Last Name' onChange={(e)=>this.handleInputChange(e)}/>
                 </div>
                 <div className='student-form-row'>
+                    <button onClick={()=>this.props.toggleDisplayForm()}>Cancel</button>
                     <button onClick={(e)=>this.handleFormSubmit(e)}>Add Student</button>
                 </div>
             </form>
