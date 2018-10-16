@@ -10,4 +10,17 @@ module.exports = {
             res.sendStatus(500);
         })
     },
+
+    getStudents: (req, res) => {
+        const db = req.app.get('db');
+
+        const {user_id} = req.params;
+
+        db.GET_STUDENTS([user_id]).then((result) => {
+            res.status(200).send(result);
+        }).catch((err) => {
+            console.log(`Server error while attempting to retrieve all students: ${err}`);
+            res.sendStatus(500);
+        })
+    }
 }
