@@ -1,6 +1,6 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import {connect} from 'redux';
+import {connect} from 'react-redux';
 import Header from '../Header/Header';
 
 export class StudentsView extends React.Component{
