@@ -2,21 +2,41 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Header from '../Header/Header';
+import AddStudentForm from './AddStudentForm';
 
 export class StudentsView extends React.Component{
     constructor(props) {
         super(props);
 
-        this.state={}
+        this.state={
+            displayForm: false
+        }
+
+        this.toggleDisplayForm = this.toggleDisplayForm.bind(this);
+    }
+
+    toggleDisplayForm(){
+        if(this.state.displayForm) {
+            this.setState({displayForm: false});
+        } else {
+            this.setState({displayForm: true});
+        }
     }
 
     render(){
         return (
             <div className='students-view'>
                 <Header headerTitle={'Students'}/>
-                <main>
+                <div className='students-main-section'>
+                    <div><button type='button' onClick={()=>this.toggleDisplayForm()}>Add Student</button></div>
                     Student view
-                </main>
+                </div>
+                {
+                    this.state.displayForm ? <div className='student-form-modal'>
+                        <AddStudentForm/>
+                    </div> : null
+                }
+                
             </div>
         )
     }
