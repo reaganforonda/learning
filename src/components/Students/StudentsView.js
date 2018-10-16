@@ -33,7 +33,7 @@ export class StudentsView extends React.Component{
                 </div>
                 {
                     this.state.displayForm ? <div className='student-form-modal'>
-                        <AddStudentForm/>
+                        <AddStudentForm activeClass={this.props.activeClass}/>
                     </div> : null
                 }
                 
@@ -44,7 +44,8 @@ export class StudentsView extends React.Component{
 
 function mapStateToProps(state) {
     return {
-        user: state.userReducer.user
+        user: state.userReducer.user,
+        activeClass: state.classReducer.activeClass
     }
 }
 
