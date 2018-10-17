@@ -11,6 +11,8 @@ export class CourseWorkView extends React.Component{
         this.state={
             displayForm: false
         }
+
+        this.toggleDisplayForm = this.toggleDisplayForm.bind(this); 
     }
 
     toggleDisplayForm(){
@@ -28,7 +30,7 @@ export class CourseWorkView extends React.Component{
                 <div>
                     <div><button onClick={()=>this.toggleDisplayForm()}>Add Course Work</button></div>
                     {
-                        this.state.displayForm ? <div className='form-modal'><AddCourseWorkForm/> </div>: null
+                        this.state.displayForm ? <div className='form-modal'><AddCourseWorkForm toggleDisplayForm={this.toggleDisplayForm} classID={this.props.activeClass.class_id}/> </div>: null
                     }
                 </div>
             </div>
