@@ -11,6 +11,7 @@ const authController = require('./controllers/authController');
 const classController = require('./controllers/classController');
 const studentController= require('./controllers/studentController');
 const courseWorkController = require('./controllers/courseWorkController');
+const attendanceController = require('./controllers/attendanceController');
 
 const {SERVER_PORT, CONNECTION_STRING, SECRET_SESSION} = process.env
 
@@ -50,7 +51,11 @@ app.get(`/api/students/:user_id`, studentController.getStudents);
 
 // Coursework Endpoints
 app.post('/api/coursework', courseWorkController.createAssignment);
-app.get('/api/coursework/:user_id', courseWorkController.getAssignment)
+app.get('/api/coursework/:user_id', courseWorkController.getAssignment);
+
+// Attendance Endpoints
+app.post('/api/attendance', attendanceController.addAttendance);
+app.get('/api/attendance', attendanceController.getAttendance);
 
 app.listen(SERVER_PORT, () => {
     console.log(`Creeping on Port: ${SERVER_PORT}`);
