@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS attendance;
 DROP TABLE IF EXISTS grades;
 DROP TABLE IF EXISTS coursework;
 DROP TABLE IF EXISTS students;
@@ -48,4 +49,13 @@ CREATE TABLE grades(
     student_id INTEGER REFERENCES students(student_id),
     course_work_id INTEGER REFERENCES coursework(course_work_id),
     raw_score NUMERIC
+);
+
+CREATE TABLE attendance(
+    attendance_id SERIAL PRIMARY KEY,
+    class_id INTEGER REFERENCES classes(class_id),
+    student_id INTEGER REFERENCES students(student_id),
+    schoolDate DATE,
+    attendance BOOLEAN,
+    tardy BOOLEAN
 );
